@@ -3,6 +3,7 @@ class MyAPI
 {
 	private $pdo;
 	private $entity;
+	private $user;
 
 	public function __construct($config = false){
 		require('./Entity.php');
@@ -26,7 +27,15 @@ class MyAPI
     	}
     }
 
-    protected function getPdo(){
+    public function getPdo(){
     	return $this->pdo;
+    }
+
+    public function getAllUsers(){
+    	return $this->user->getAll();
+    }
+
+    public function findUserBy($key, $value){
+    	return $this->user->findUserBy($key, $value);
     }
 }
