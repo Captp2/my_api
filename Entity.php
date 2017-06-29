@@ -20,7 +20,12 @@ abstract class Entity{
 	}
 
 	public function findBy($key, $value){
-		$query = $this->pdo->prepare('SELECT * FROM ' . strtolower(static::class) . 's WHERE' . $key . '=' . $id);
+		if(is_numeric($value)){
+			$query = $this->pdo->prepare('SELECT * FROM ' . strtolower(static::class) . 's WHERE ' . $key . ' = ' . $value);
+		}
+		else{
+			$query = $this->pdo->prepare('SELECT * FROM ' . strtolower(static::class) . 's WHERE ' . $key . ' = "' . $value . '"');
+		}
 		$query->execute();
 		$fetch = $query->fetchAll(PDO::FETCH_ASSOC);
 		if($fetch){

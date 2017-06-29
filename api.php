@@ -36,6 +36,10 @@ class MyAPI
     }
 
     public function findUserBy($key, $value){
-    	return $this->user->findUserBy($key, $value);
+    	return $this->user->findBy($key, $value);
+    }
+
+    public function findUserById($id){
+    	return $this->user->findBy('id', $value);
     }
 }

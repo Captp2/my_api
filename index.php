@@ -11,7 +11,7 @@ error_reporting(E_ALL); ?>
 </head>
 <?php require('./api.php');
 $api = new MyAPI();
-$api->findUserBy('id', 1);
+$api->findUserBy('id', 2);
 ?>
 <body id="home">
 	<h1>Welcome on my API !</h1>
