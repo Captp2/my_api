@@ -10,3 +10,5 @@ How to use my_api :
 	For instance :
 		'User.php' is the class name
 		'users' is the table name
+		
+All commits messages are inexistants since i'm mostly working on my school git server.
