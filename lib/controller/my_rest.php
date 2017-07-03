@@ -7,29 +7,6 @@ class My_Rest{
 	private $_method = "";
 	private $_code = 200;
 
-	public function construct(){
-		$this->handleInputs();
-	}
-
-	private function handleInputs(){
-		switch($_SERVER['REQUEST_METHOD']){
-			case "POST":
-			$this->_request = $this->cleanInputs($_POST);
-			break;
-			case "GET":
-			case "DELETE":
-			$this->_request = $this->cleanInputs($_GET);
-			break;
-			case "PUT":
-			parse_str(file_get_contents("php://input"), $this->_request);
-			$this->_request = $this->cleanInputs($this->_request);
-			break;
-			default:
-			$this->response('',406);
-			break;
-		}
-	}
-
 	private function get_status_message(){
 		$status = array(
 			100 => 'Continue',  
@@ -76,7 +53,7 @@ class My_Rest{
 		return ($status[$this->_code]) ? $status[$this->_code] : $status[500];
 	}
 
-	private function cleanInputs($data){
+	protected function cleanInputs($data){
 		$clean_input = array();
 		if(is_array($data)){
 			foreach($data as $key => $value){
